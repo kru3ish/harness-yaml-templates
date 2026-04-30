@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: registration
+  description: Registration service
+  tags:
+    - firebird
+    - platform
+spec:
+  type: firebird-platform
+  lifecycle: production
+  owner: user:account/krish.mehta
