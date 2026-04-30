@@ -4,47 +4,59 @@
     "psa_chart_version": "8.8-m03-trixie",
     "psa_default_tag": "8.8-m03-trixie",
     "psa_default_replicas": "3",
+    "psa_replica_summary": "all 32 PSA services: 3 replicas each",
     "platform_chart_version": "14.22-trixie",
     "platform_default_tag": "14.22-trixie",
     "platform_default_replicas": "3",
+    "platform_replica_summary": "saga-orchestration: 3, configurations: 3, registration: 3, reservations: 3, test: 3",
     "utilities_chart_version": "trixie-perl",
     "utilities_default_tag": "trixie",
-    "utilities_default_replicas": "2"
+    "utilities_default_replicas": "2",
+    "utilities_replica_summary": "redis: 2, kafka: 2, elasticsearch: 2, zookeeper: 2, mongodb: 2"
   },
   {
     "name": "UAT defaults (test config)",
     "psa_chart_version": "8.8-m03-trixie",
     "psa_default_tag": "8.8-m03-trixie",
     "psa_default_replicas": "2",
+    "psa_replica_summary": "all 32 PSA services: 2 replicas each",
     "platform_chart_version": "14.22-trixie",
     "platform_default_tag": "14.22-trixie",
     "platform_default_replicas": "2",
+    "platform_replica_summary": "saga-orchestration: 2, configurations: 2, registration: 2, reservations: 2, test: 2",
     "utilities_chart_version": "trixie-perl",
     "utilities_default_tag": "trixie",
-    "utilities_default_replicas": "1"
+    "utilities_default_replicas": "1",
+    "utilities_replica_summary": "redis: 1, kafka: 1, elasticsearch: 1, zookeeper: 1, mongodb: 1"
   },
   {
     "name": "Dev defaults (minimal)",
     "psa_chart_version": "8.6-m01-bookworm",
     "psa_default_tag": "8.6-m01-bookworm",
     "psa_default_replicas": "1",
+    "psa_replica_summary": "all 32 PSA services: 1 replica each",
     "platform_chart_version": "14.20-bookworm",
     "platform_default_tag": "14.20-bookworm",
     "platform_default_replicas": "1",
+    "platform_replica_summary": "saga-orchestration: 1, configurations: 1, registration: 1, reservations: 1, test: 1",
     "utilities_chart_version": "1.27-bookworm-perl",
     "utilities_default_tag": "22-bookworm",
-    "utilities_default_replicas": "1"
+    "utilities_default_replicas": "1",
+    "utilities_replica_summary": "redis: 1, kafka: 1, elasticsearch: 1, zookeeper: 1, mongodb: 1"
   },
   {
     "name": "Canary build (latest unstable)",
     "psa_chart_version": "8.9-rc1-trixie",
     "psa_default_tag": "8.9-rc1-trixie",
     "psa_default_replicas": "1",
+    "psa_replica_summary": "all 32 PSA services: 1 replica each",
     "platform_chart_version": "17.5-rc2-trixie",
     "platform_default_tag": "17.5-rc2-trixie",
     "platform_default_replicas": "1",
+    "platform_replica_summary": "saga-orchestration: 1, configurations: 1, registration: 1, reservations: 1, test: 1",
     "utilities_chart_version": "1.28-trixie-perl",
     "utilities_default_tag": "23-trixie",
-    "utilities_default_replicas": "1"
+    "utilities_default_replicas": "1",
+    "utilities_replica_summary": "redis: 1, kafka: 1, elasticsearch: 1, zookeeper: 1, mongodb: 1"
   }
 ]
