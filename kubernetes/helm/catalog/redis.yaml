@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: redis
+  description: Redis service
+  tags:
+    - firebird
+    - utilities
+spec:
+  type: firebird-utility
+  lifecycle: production
+  owner: user:account/krish.mehta
