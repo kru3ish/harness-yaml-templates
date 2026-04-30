@@ -1,0 +1,32 @@
+[
+  {
+    "name": "firebird-dev-db (Dev Primary)",
+    "server": "firebird-dev-db.internal",
+    "instance": "5432",
+    "endpoint": "firebird-dev-db.internal:5432"
+  },
+  {
+    "name": "firebird-uat-db (UAT Primary)",
+    "server": "firebird-uat-db.internal",
+    "instance": "5432",
+    "endpoint": "firebird-uat-db.internal:5432"
+  },
+  {
+    "name": "firebird-prod-db (Prod Primary)",
+    "server": "firebird-prod-db.internal",
+    "instance": "5432",
+    "endpoint": "firebird-prod-db.internal:5432"
+  },
+  {
+    "name": "firebird-dr-db (DR Standby)",
+    "server": "firebird-dr-db.internal",
+    "instance": "5432",
+    "endpoint": "firebird-dr-db.internal:5432"
+  },
+  {
+    "name": "firebird-perf-db (Perf Testing)",
+    "server": "firebird-perf-db.internal",
+    "instance": "5433",
+    "endpoint": "firebird-perf-db.internal:5433"
+  }
+]
