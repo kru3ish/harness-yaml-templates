@@ -1,0 +1,16 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: email-processor sms-processor ingest dispatcher shipment-tracker billing-aggregator audit-logger notification-router event-bus reconciliation settlement reporting-api data-export search-indexer cache-warmer schedule-runner workflow-orchestrator integration-bridge tenant-resolver feature-flag-svc rate-limiter api-gateway webhook-dispatcher metrics-collector alert-router health-aggregator tenant-config secrets-rotator migration-runner backup-coordinator graph-resolver allcommand
+  description: Email Processor Sms Processor Ingest Dispatcher Shipment Tracker Billing Aggregator Audit Logger Notification Router Event Bus Reconciliation Settlement Reporting Api Data Export Search Indexer Cache Warmer Schedule Runner Workflow Orchestrator Integration Bridge Tenant Resolver Feature Flag Svc Rate Limiter Api Gateway Webhook Dispatcher Metrics Collector Alert Router Health Aggregator Tenant Config Secrets Rotator Migration Runner Backup Coordinator Graph Resolver Allcommand service
+  tags:
+    - firebird
+    - psa
+  annotations:
+    harness.io/chart: psa
+spec:
+  type: firebird-psa
+  lifecycle: production
+  owner: user:account/krish.mehta
+
