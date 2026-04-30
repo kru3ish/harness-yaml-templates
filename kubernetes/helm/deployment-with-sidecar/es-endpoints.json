@@ -1,0 +1,26 @@
+[
+  {
+    "name": "es-dev (Dev Cluster)",
+    "server": "es-dev.internal",
+    "instance": "9200",
+    "endpoint": "https://es-dev.internal:9200"
+  },
+  {
+    "name": "es-uat (UAT Cluster)",
+    "server": "es-uat.internal",
+    "instance": "9200",
+    "endpoint": "https://es-uat.internal:9200"
+  },
+  {
+    "name": "es-prod (Prod Cluster)",
+    "server": "es-prod.internal",
+    "instance": "9200",
+    "endpoint": "https://es-prod.internal:9200"
+  },
+  {
+    "name": "es-dr (DR Cluster)",
+    "server": "es-dr.internal",
+    "instance": "9200",
+    "endpoint": "https://es-dr.internal:9200"
+  }
+]
