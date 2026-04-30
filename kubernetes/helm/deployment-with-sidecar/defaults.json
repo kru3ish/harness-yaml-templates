@@ -1,12 +1,14 @@
-{
-  "items": [{"name": "Chart defaults (auto-loaded)"}],
-  "psa_chart_version": "8.8-m03-trixie",
-  "psa_default_tag": "8.8-m03-trixie",
-  "psa_default_replicas": "1",
-  "platform_chart_version": "14.22-trixie",
-  "platform_default_tag": "14.22-trixie",
-  "platform_default_replicas": "1",
-  "utilities_chart_version": "trixie-perl",
-  "utilities_default_tag": "trixie",
-  "utilities_default_replicas": "1"
-}
+[
+  {
+    "name": "Chart defaults (auto-loaded)",
+    "psa_chart_version": "8.8-m03-trixie",
+    "psa_default_tag": "8.8-m03-trixie",
+    "psa_default_replicas": "1",
+    "platform_chart_version": "14.22-trixie",
+    "platform_default_tag": "14.22-trixie",
+    "platform_default_replicas": "1",
+    "utilities_chart_version": "trixie-perl",
+    "utilities_default_tag": "trixie",
+    "utilities_default_replicas": "1"
+  }
+]
