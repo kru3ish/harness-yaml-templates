@@ -1,0 +1,150 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: redis
+  description: Redis cache service
+  tags:
+    - firebird
+    - utilities
+  annotations:
+    harness.io/chart: utilities
+spec:
+  type: firebird-utility
+  lifecycle: production
+  owner: user:account/krish.mehta
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: kafka
+  description: Kafka message broker
+  tags:
+    - firebird
+    - utilities
+  annotations:
+    harness.io/chart: utilities
+spec:
+  type: firebird-utility
+  lifecycle: production
+  owner: user:account/krish.mehta
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: elasticsearch
+  description: Elasticsearch search engine
+  tags:
+    - firebird
+    - utilities
+  annotations:
+    harness.io/chart: utilities
+spec:
+  type: firebird-utility
+  lifecycle: production
+  owner: user:account/krish.mehta
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: zookeeper
+  description: Zookeeper coordination service
+  tags:
+    - firebird
+    - utilities
+  annotations:
+    harness.io/chart: utilities
+spec:
+  type: firebird-utility
+  lifecycle: production
+  owner: user:account/krish.mehta
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: mongodb
+  description: MongoDB database
+  tags:
+    - firebird
+    - utilities
+  annotations:
+    harness.io/chart: utilities
+spec:
+  type: firebird-utility
+  lifecycle: production
+  owner: user:account/krish.mehta
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: saga-orchestration
+  description: Saga orchestration service
+  tags:
+    - firebird
+    - platform
+  annotations:
+    harness.io/chart: platform
+spec:
+  type: firebird-platform
+  lifecycle: production
+  owner: user:account/krish.mehta
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: configurations
+  description: Configurations service
+  tags:
+    - firebird
+    - platform
+  annotations:
+    harness.io/chart: platform
+spec:
+  type: firebird-platform
+  lifecycle: production
+  owner: user:account/krish.mehta
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: registration
+  description: Registration service
+  tags:
+    - firebird
+    - platform
+  annotations:
+    harness.io/chart: platform
+spec:
+  type: firebird-platform
+  lifecycle: production
+  owner: user:account/krish.mehta
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: reservations
+  description: Reservations service
+  tags:
+    - firebird
+    - platform
+  annotations:
+    harness.io/chart: platform
+spec:
+  type: firebird-platform
+  lifecycle: production
+  owner: user:account/krish.mehta
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: test
+  description: Test service
+  tags:
+    - firebird
+    - platform
+  annotations:
+    harness.io/chart: platform
+spec:
+  type: firebird-platform
+  lifecycle: production
+  owner: user:account/krish.mehta
