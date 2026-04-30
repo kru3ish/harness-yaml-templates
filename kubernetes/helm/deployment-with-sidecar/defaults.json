@@ -1,14 +1,50 @@
 [
   {
-    "name": "Chart defaults (auto-loaded)",
+    "name": "Production defaults (HA)",
     "psa_chart_version": "8.8-m03-trixie",
     "psa_default_tag": "8.8-m03-trixie",
-    "psa_default_replicas": "1",
+    "psa_default_replicas": "3",
     "platform_chart_version": "14.22-trixie",
     "platform_default_tag": "14.22-trixie",
-    "platform_default_replicas": "1",
+    "platform_default_replicas": "3",
     "utilities_chart_version": "trixie-perl",
     "utilities_default_tag": "trixie",
+    "utilities_default_replicas": "2"
+  },
+  {
+    "name": "UAT defaults (test config)",
+    "psa_chart_version": "8.8-m03-trixie",
+    "psa_default_tag": "8.8-m03-trixie",
+    "psa_default_replicas": "2",
+    "platform_chart_version": "14.22-trixie",
+    "platform_default_tag": "14.22-trixie",
+    "platform_default_replicas": "2",
+    "utilities_chart_version": "trixie-perl",
+    "utilities_default_tag": "trixie",
+    "utilities_default_replicas": "1"
+  },
+  {
+    "name": "Dev defaults (minimal)",
+    "psa_chart_version": "8.6-m01-bookworm",
+    "psa_default_tag": "8.6-m01-bookworm",
+    "psa_default_replicas": "1",
+    "platform_chart_version": "14.20-bookworm",
+    "platform_default_tag": "14.20-bookworm",
+    "platform_default_replicas": "1",
+    "utilities_chart_version": "1.27-bookworm-perl",
+    "utilities_default_tag": "22-bookworm",
+    "utilities_default_replicas": "1"
+  },
+  {
+    "name": "Canary build (latest unstable)",
+    "psa_chart_version": "8.9-rc1-trixie",
+    "psa_default_tag": "8.9-rc1-trixie",
+    "psa_default_replicas": "1",
+    "platform_chart_version": "17.5-rc2-trixie",
+    "platform_default_tag": "17.5-rc2-trixie",
+    "platform_default_replicas": "1",
+    "utilities_chart_version": "1.28-trixie-perl",
+    "utilities_default_tag": "23-trixie",
     "utilities_default_replicas": "1"
   }
 ]
