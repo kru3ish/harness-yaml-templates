@@ -1,0 +1,158 @@
+openapi: "3.0.3"
+info:
+  title: User Authentication API
+  version: 2.1.0
+  description: |
+    OAuth2/OIDC authentication service API. Handles user login, token issuance,
+    refresh, revocation, MFA enrollment, and session management.
+  contact:
+    name: Platform Auth Team
+    email: auth-team@example.com
+  license:
+    name: Internal
+servers:
+  - url: https://auth.internal.eprod.io/v2
+    description: Production
+  - url: https://auth-staging.internal.eprod.io/v2
+    description: Staging
+paths:
+  /oauth/token:
+    post:
+      summary: Issue access token
+      operationId: issueToken
+      tags: [Authentication]
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                grant_type:
+                  type: string
+                  enum: [authorization_code, refresh_token, client_credentials]
+                code:
+                  type: string
+                redirect_uri:
+                  type: string
+                refresh_token:
+                  type: string
+      responses:
+        "200":
+          description: Token issued
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                  token_type:
+                    type: string
+                    example: Bearer
+                  expires_in:
+                    type: integer
+                    example: 3600
+                  refresh_token:
+                    type: string
+                  scope:
+                    type: string
+        "401":
+          description: Invalid credentials
+  /oauth/revoke:
+    post:
+      summary: Revoke a token
+      operationId: revokeToken
+      tags: [Authentication]
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                token_type_hint:
+                  type: string
+                  enum: [access_token, refresh_token]
+      responses:
+        "200":
+          description: Token revoked
+  /mfa/enroll:
+    post:
+      summary: Enroll MFA device
+      operationId: enrollMFA
+      tags: [MFA]
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                method:
+                  type: string
+                  enum: [totp, sms, webauthn]
+      responses:
+        "201":
+          description: MFA device enrolled
+  /sessions:
+    get:
+      summary: List active sessions
+      operationId: listSessions
+      tags: [Sessions]
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: Active sessions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    session_id:
+                      type: string
+                    created_at:
+                      type: string
+                      format: date-time
+                    ip_address:
+                      type: string
+                    user_agent:
+                      type: string
+  /userinfo:
+    get:
+      summary: Get current user info (OIDC)
+      operationId: getUserInfo
+      tags: [OIDC]
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: User info
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sub:
+                    type: string
+                  email:
+                    type: string
+                  name:
+                    type: string
+                  groups:
+                    type: array
+                    items:
+                      type: string
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
