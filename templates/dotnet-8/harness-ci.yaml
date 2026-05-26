@@ -1,0 +1,14 @@
+pipeline:
+  name: CI - .NET 8
+  stages:
+    - stage:
+        name: Build & Test
+        type: CI
+        spec:
+          steps:
+            - step: {type: Run, name: Restore, spec: {command: "dotnet restore"}}
+            - step: {type: Run, name: Build, spec: {command: "dotnet build --no-restore"}}
+            - step: {type: Run, name: Test, spec: {command: "dotnet test --no-build --collect:'XPlat Code Coverage'"}}
+            - step: {type: Security, name: SAST Scan, spec: {tool: semgrep}}
+            - step: {type: Security, name: SCA Scan, spec: {tool: dotnet-retire}}
+            - step: {type: BuildAndPushDockerRegistry, name: Push Image}
