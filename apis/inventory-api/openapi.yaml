@@ -1,0 +1,103 @@
+openapi: "3.0.3"
+info:
+  title: Inventory Management API
+  version: 1.4.0
+  description: |
+    Real-time inventory tracking API for stock levels, reservations,
+    warehouse sync, and alert management.
+servers:
+  - url: https://inventory.internal.eprod.io/api/v1
+paths:
+  /stock/{sku}:
+    get:
+      summary: Get current stock level
+      operationId: getStock
+      tags: [Stock]
+      parameters:
+        - name: sku
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Stock level
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sku:
+                    type: string
+                  available:
+                    type: integer
+                  reserved:
+                    type: integer
+                  warehouse:
+                    type: string
+                  last_updated:
+                    type: string
+                    format: date-time
+    put:
+      summary: Adjust stock level
+      operationId: adjustStock
+      tags: [Stock]
+      parameters:
+        - name: sku
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                adjustment:
+                  type: integer
+                reason:
+                  type: string
+                  enum: [warehouse_sync, return, damage, correction]
+      responses:
+        "200":
+          description: Stock adjusted
+  /reservations:
+    post:
+      summary: Create stock reservation
+      operationId: createReservation
+      tags: [Reservations]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sku:
+                  type: string
+                quantity:
+                  type: integer
+                order_id:
+                  type: string
+                expires_at:
+                  type: string
+                  format: date-time
+      responses:
+        "201":
+          description: Reservation created
+  /alerts:
+    get:
+      summary: List active stock alerts
+      operationId: listAlerts
+      tags: [Alerts]
+      parameters:
+        - name: severity
+          in: query
+          schema:
+            type: string
+            enum: [critical, warning, info]
+      responses:
+        "200":
+          description: Active alerts
