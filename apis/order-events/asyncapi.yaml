@@ -1,0 +1,78 @@
+asyncapi: "2.6.0"
+info:
+  title: Order Events Stream
+  version: 1.0.0
+  description: |
+    Kafka event stream for order lifecycle events. Consumed by inventory,
+    notification, and analytics services.
+servers:
+  production:
+    url: kafka://kafka.internal.eprod.io:9092
+    protocol: kafka
+channels:
+  orders.created:
+    publish:
+      summary: Order created event
+      message:
+        payload:
+          type: object
+          properties:
+            order_id:
+              type: string
+              format: uuid
+            customer_id:
+              type: string
+            items:
+              type: array
+              items:
+                type: object
+                properties:
+                  sku:
+                    type: string
+                  quantity:
+                    type: integer
+                  price:
+                    type: number
+            total:
+              type: number
+            created_at:
+              type: string
+              format: date-time
+  orders.status_changed:
+    publish:
+      summary: Order status transition event
+      message:
+        payload:
+          type: object
+          properties:
+            order_id:
+              type: string
+            previous_status:
+              type: string
+              enum: [pending, confirmed, processing, shipped, delivered, cancelled]
+            new_status:
+              type: string
+              enum: [pending, confirmed, processing, shipped, delivered, cancelled]
+            changed_at:
+              type: string
+              format: date-time
+            reason:
+              type: string
+  orders.payment_completed:
+    publish:
+      summary: Payment confirmation event
+      message:
+        payload:
+          type: object
+          properties:
+            order_id:
+              type: string
+            payment_id:
+              type: string
+            amount:
+              type: number
+            currency:
+              type: string
+            provider:
+              type: string
+              enum: [stripe, adyen, paypal]
