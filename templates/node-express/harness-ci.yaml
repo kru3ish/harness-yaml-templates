@@ -1,0 +1,14 @@
+pipeline:
+  name: CI - Node.js Express
+  stages:
+    - stage:
+        name: Build & Test
+        type: CI
+        spec:
+          steps:
+            - step: {type: Run, name: Install, spec: {command: "npm ci"}}
+            - step: {type: Run, name: Lint, spec: {command: "npm run lint"}}
+            - step: {type: Run, name: Test, spec: {command: "npm test -- --coverage"}}
+            - step: {type: Security, name: SAST Scan, spec: {tool: semgrep}}
+            - step: {type: Security, name: SCA Scan, spec: {tool: npm-audit}}
+            - step: {type: BuildAndPushDockerRegistry, name: Push Image}
