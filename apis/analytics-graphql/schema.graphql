@@ -1,0 +1,111 @@
+type Query {
+  # Get dashboard metrics for a date range
+  dashboardMetrics(
+    startDate: DateTime!
+    endDate: DateTime!
+    granularity: Granularity = DAILY
+  ): DashboardMetrics!
+
+  # Get KPI summary for executive view
+  kpiSummary(period: Period = LAST_30_DAYS): KPISummary!
+
+  # Get user engagement metrics
+  userEngagement(
+    userId: ID
+    startDate: DateTime!
+    endDate: DateTime!
+  ): UserEngagement!
+
+  # List available reports
+  reports(status: ReportStatus, limit: Int = 20): [Report!]!
+}
+
+type Mutation {
+  # Generate a new report
+  generateReport(input: GenerateReportInput!): Report!
+
+  # Schedule recurring report
+  scheduleReport(input: ScheduleReportInput!): ScheduledReport!
+
+  # Export dashboard as PDF
+  exportDashboard(dashboardId: ID!, format: ExportFormat!): ExportJob!
+}
+
+type Subscription {
+  # Real-time metric updates
+  metricUpdated(metricNames: [String!]): MetricUpdate!
+
+  # Report generation progress
+  reportProgress(reportId: ID!): ReportProgress!
+}
+
+type DashboardMetrics {
+  revenue: [TimeseriesPoint!]!
+  activeUsers: [TimeseriesPoint!]!
+  conversionRate: [TimeseriesPoint!]!
+  orderVolume: [TimeseriesPoint!]!
+}
+
+type KPISummary {
+  totalRevenue: Money!
+  revenueGrowth: Float!
+  activeUsers: Int!
+  userGrowth: Float!
+  averageOrderValue: Money!
+  customerSatisfaction: Float!
+}
+
+type UserEngagement {
+  sessions: Int!
+  avgSessionDuration: Duration!
+  pageViews: Int!
+  bounceRate: Float!
+  topPages: [PageView!]!
+}
+
+type Report {
+  id: ID!
+  name: String!
+  type: ReportType!
+  status: ReportStatus!
+  createdAt: DateTime!
+  downloadUrl: String
+}
+
+type TimeseriesPoint {
+  timestamp: DateTime!
+  value: Float!
+}
+
+type Money {
+  amount: Float!
+  currency: String!
+}
+
+input GenerateReportInput {
+  name: String!
+  type: ReportType!
+  dateRange: DateRangeInput!
+  filters: ReportFilters
+}
+
+input ScheduleReportInput {
+  name: String!
+  type: ReportType!
+  cron: String!
+  recipients: [String!]!
+}
+
+input DateRangeInput {
+  start: DateTime!
+  end: DateTime!
+}
+
+enum Granularity { HOURLY DAILY WEEKLY MONTHLY }
+enum Period { TODAY LAST_7_DAYS LAST_30_DAYS LAST_90_DAYS YEAR_TO_DATE }
+enum ReportType { REVENUE ENGAGEMENT CONVERSION EXECUTIVE }
+enum ReportStatus { PENDING GENERATING COMPLETED FAILED }
+enum ExportFormat { PDF PNG CSV }
+
+scalar DateTime
+scalar Duration
