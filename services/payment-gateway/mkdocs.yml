@@ -1,0 +1,6 @@
+site_name: Payment Gateway
+nav:
+  - Home: index.md
+  - Deployment: deployment.md
+plugins:
+  - techdocs-core
