@@ -1,0 +1,13 @@
+pipeline:
+  name: CI - Java Spring Boot
+  stages:
+    - stage:
+        name: Build & Test
+        type: CI
+        spec:
+          steps:
+            - step: {type: Run, name: Build, spec: {command: "mvn clean package -DskipTests"}}
+            - step: {type: Run, name: Unit Tests, spec: {command: "mvn test"}}
+            - step: {type: Security, name: SAST Scan, spec: {tool: semgrep}}
+            - step: {type: Security, name: SCA Scan, spec: {tool: owasp-dependency-check}}
+            - step: {type: BuildAndPushDockerRegistry, name: Push Image}
