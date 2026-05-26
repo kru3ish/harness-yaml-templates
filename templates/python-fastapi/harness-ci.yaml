@@ -1,0 +1,14 @@
+pipeline:
+  name: CI - Python FastAPI
+  stages:
+    - stage:
+        name: Build & Test
+        type: CI
+        spec:
+          steps:
+            - step: {type: Run, name: Install, spec: {command: "pip install -r requirements.txt -r requirements-dev.txt"}}
+            - step: {type: Run, name: Lint, spec: {command: "ruff check ."}}
+            - step: {type: Run, name: Test, spec: {command: "pytest --cov=app tests/"}}
+            - step: {type: Security, name: SAST Scan, spec: {tool: bandit}}
+            - step: {type: Security, name: SCA Scan, spec: {tool: safety}}
+            - step: {type: BuildAndPushDockerRegistry, name: Push Image}
