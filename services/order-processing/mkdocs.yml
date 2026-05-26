@@ -1,0 +1,6 @@
+site_name: Order Processing
+nav:
+  - Home: index.md
+  - Runbook: runbook.md
+plugins:
+  - techdocs-core
